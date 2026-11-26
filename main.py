@@ -1,3 +1,4 @@
+from argparse import ArgumentParser
 from pathlib import Path
 
 
@@ -7,4 +8,6 @@ def write_entry(destination: Path) -> None:
 
 
 if __name__ == "__main__":
-    write_entry(Path("/output/entry.txt"))
+    parser = ArgumentParser()
+    parser.add_argument("--output", type=Path, default=Path("/output/entry.txt"))
+    write_entry(parser.parse_args().output)
